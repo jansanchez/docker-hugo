@@ -13,9 +13,11 @@ RUN apk update \
     && apk upgrade \
     && apk add --no-cache ca-certificates
 
-RUN mkdir -p /tmp/source
-RUN mkdir -p /tmp/output
-RUN chmod 755 /tmp/run.sh
+RUN mkdir -p /tmp/source \
+    && mkdir -p /tmp/output
+RUN chmod 755 -R /tmp/source \ 
+    && chmod 755 -R /tmp/output \
+    && chmod 755 -R /tmp/run.sh
 
 VOLUME /tmp/source
 VOLUME /tmp/output
