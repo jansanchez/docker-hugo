@@ -13,6 +13,7 @@ RUN apk update \
     && apk upgrade \
     && apk add --no-cache ca-certificates
 
+RUN mkdir -p /tmp/
 RUN mkdir -p /tmp/source \
     && mkdir -p /tmp/output
 RUN chmod 755 -R /tmp/source \ 
