@@ -13,10 +13,11 @@ RUN apk update \
     && apk upgrade \
     && apk add --no-cache ca-certificates
 
-RUN mkdir -p /tmp/
+RUN mkdir -p /tmp/ \
+    && chmod 755 -R /tmp/
 RUN mkdir -p /tmp/source \
     && mkdir -p /tmp/output
-RUN chmod 755 -R /tmp/source \ 
+RUN chmod 755 -R /tmp/source \
     && chmod 755 -R /tmp/output \
     && chmod 755 -R /tmp/run.sh
 
@@ -28,4 +29,4 @@ CMD ["/tmp/run.sh"]
 
 EXPOSE 1313
 
-# Forked from https://github.com/jojomi/docker-hugo 
+# Forked from https://github.com/jojomi/docker-hugo
