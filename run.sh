@@ -16,10 +16,10 @@ while [ true ]
 do
     if [[ $HUGO_WATCH != 'false' ]]; then
 	    echo "Watching..."
-        $HUGO server --watch=true --source="/tmp/source" --theme="$HUGO_THEME" --destination="/tmp/output" --baseURL="$HUGO_BASEURL" --bind="0.0.0.0" "$@" || exit 1
+        $HUGO server --watch=true --source="/tmp/source" --theme="$HUGO_THEME" --destination="/tmp/output" --baseURL="$HUGO_BASEURL" --bind="0.0.0.0" "$@" --port="$HUGO_PORT" || exit 1
     else
 	    echo "Building one time..."
-        $HUGO --source="/tmp/source" --theme="$HUGO_THEME" --destination="/tmp/output" --baseURL="$HUGO_BASEURL" "$@" || exit 1
+        $HUGO --source="/tmp/source" --theme="$HUGO_THEME" --destination="/tmp/output" --baseURL="$HUGO_BASEURL" "$@" --port="$HUGO_PORT" || exit 1
     fi
 
     if [[ $HUGO_REFRESH_TIME == -1 ]]; then
@@ -29,4 +29,4 @@ do
     sleep $SLEEP
 done
 
-# Forked from https://github.com/jojomi/docker-hugo 
+# Forked from https://github.com/jojomi/docker-hugo
